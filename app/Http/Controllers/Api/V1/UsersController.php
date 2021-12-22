@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\UserService;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Validation\Rule;
 use Validator;
 use Response;
 use Auth;
@@ -43,7 +44,7 @@ class UsersController extends Controller
             'confirm_password' => 'required|same:password',
             'dob' => 'required|date',
             'address' => 'required',
-            'agent'=>'required',
+            'agent'=>['required',Rule::in(["Yes", "No"])],
         ]);
         //print_r($input);die;
         if ($validator->fails()) {
