@@ -43,7 +43,7 @@ class UsersController extends Controller
             'confirm_password' => 'required|same:password',
             'dob' => 'required|date',
             'address' => 'required',
-            
+            'agent'=>'required',
         ]);
         //print_r($input);die;
         if ($validator->fails()) {
